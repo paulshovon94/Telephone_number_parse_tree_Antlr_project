@@ -1,0 +1,61 @@
+grammar telephone;
+
+number
+   : '+1'? '+'? variation
+   ;
+
+variation
+   : bangladesh
+   ;
+
+// Bangladesh Numbering Plan
+bangladesh
+   : '880' operator subscriber
+   ;
+
+operator
+   : citycell
+   | teletalk
+   | robi
+   | airtel
+   | grameenphone
+   |banglalink
+   ;
+
+citycell
+   : '11'
+   ;
+
+teletalk
+   : '15'
+   ;
+
+robi
+   : '18'
+   ;
+
+airtel
+   : '16'
+   ;
+
+grameenphone
+   : '17'
+   | '13'
+   ;
+
+banglalink
+   : '19'
+   ;
+   
+// Subscriber
+subscriber
+   : DIGIT DIGIT DIGIT DIGIT DIGIT DIGIT
+   ;
+
+DIGIT
+   : [0-9]
+   ;
+
+WS
+   : [ \r\n] + -> skip
+   ;
